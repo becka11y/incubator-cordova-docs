@@ -22,6 +22,21 @@ Upgrading Cordova iOS
 
 Please note that **Xcode 4 is required**. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 5.1. The iOS 5.1 SDK requires Xcode 4.
 
+## Upgrading Cordova 2.0.0 projects to Edge ##
+
+1. Clone / Pull the latest sources from Github or Apache.
+2. **Close** Xcode if it is running.
+3. **Navigate** to the directory where you the downloaded source - <yourPath>/incubator-cordova-ios.
+4. **Type** Make.  This will update the CORDOVALIB build setting in Xcode to point to <yourPath>/incubator-cordova-ios/CordovaLib.
+5. **Open** your existing project in Xcode.  **Navigate** to Xcode Preferences, Locations, Source Trees and **update** your CORDOVALIB setting if CordovaLib is in a new location (previously it was installed in ~/Documents/CordovaLib).
+6. In Xcode, **select** the Build Settings tab for your project.  Under the Apple LLVM Compiler 3.1 - Language section **set** Objecttive-C Automatic Reference Counting to **Yes**.  Under the Apple LLVM Compiler 3.1 - Warnings **set** Objective-C++ Automatic Reference Counting ABI incompatibilities to **Yes**.
+7. Make the same changes as step #6 to the build settings for the CordovaLib.xcodeproj.
+8. **Select** the Build Phases tab of the CordovaLib.xcodeproj.  Open the Compiled Sources section.  Double click **JSONKit.m** to pop open the compiler setting pane for that file.  Type **-fno-objc-arc** and press Done.  This tells the compiler to NOT use ARC for the JSONKit.m file.
+9. If you are using plugins you will need to update the plugin files for ARC (see http://developer.apple.com/library/ios/#releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) or tell the complier to NOT use ARC for those files.  Follow the same procedure as step #8 but for the Build Phases section in your project and for each of the plugin *.m files. 
+10. **Build** your project, it should compile and link with **no issues**.
+11. **Select your project** from the **Scheme** drop-down, and then select **"iPhone 5.1 Simulator"**
+12. Select the **Run** button
+
 ## Upgrading Cordova 1.9.0 projects to 2.0.0 ##
 
 1. **Install** Cordova 2.0.0
