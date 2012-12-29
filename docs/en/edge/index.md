@@ -87,6 +87,10 @@ license: Licensed to the Apache Software Foundation (ASF) under one
     </ul>
     <h1>Guides</h1>
     <ul>
+    	<li>
+            <h2>Quick Start Guides</h2>
+            <span>Brief instructions to setup each SDK and create your first Cordova app.</span>
+        </li>
         <li>
             <h2>Getting Started Guides</h2>
             <span>Setup each SDK and create your first Cordova app.</span>
